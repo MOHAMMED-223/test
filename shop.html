@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تفاصيل الفيزا</title>
+    <h1>Payment Data</h1>
+
+    <style>
+      body {
+        font-family: "Times New Roman", Times, serif;
+        text-align: center;
+        margin-top: 50px;
+        background-color: rgb(255, 182, 229);
+        color: rgb(144, 12, 122);
+        line-height: 1.6;
+      }
+
+      .visa-logo {
+        width: 250px;
+        margin: 10px auto;
+        display: block;
+      }
+
+      .form-container {
+        width: 300px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-container input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      .form-container button {
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(144, 12, 122);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .form-container button:hover {
+        background-color: rgb(201, 142, 142);
+      }
+
+      .back-button {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        background-color: rgb(144, 12, 122);
+        border-radius: 5px;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+      }
+
+      .back-button:hover {
+        background-color: rgb(201, 142, 142);
+      }
+
+      .back-button {
+        width: calc(100% * 2 / 5);
+        background-color: #ccc;
+        color: #b22222;
+        margin-top: 10px;
+      }
+
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form id="paymentForm">
+        <input
+          type="text"
+          id="cardNumber"
+          placeholder="رقم البطاقة"
+          maxlength="16"
+        />
+        <div id="cardNumberError" class="error"></div>
+
+        <!-- استخدام حقل التقويم لاختيار الشهر والسنة -->
+        <input
+          type="month"
+          id="expiryDate"
+          placeholder="تاريخ الانتهاء (MM/YY)"
+        />
+        <div id="expiryDateError" class="error"></div>
+
+        <input type="text" id="cvv" placeholder="CVV" maxlength="3" />
+        <div id="cvvError" class="error"></div>
+
+        <button type="submit">تاكيد الدفع</button>
+        <button type="button" class="back-button" onclick="goToProductsPage()">
+          العودة للصفحة الرئيسية
+        </button>
+      </form>
+    </div>
+
+    <script>
+      // التحقق من صحة المدخلات عند التقديم
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          let isValid = true;
+
+          // التحقق من صحة رقم البطاقة
+          const cardNumber = document.getElementById("cardNumber").value;
+          const cardNumberError = document.getElementById("cardNumberError");
+          if (!/^\d{16}$/.test(cardNumber)) {
+            cardNumberError.textContent =
+              "رقم البطاقة يجب أن يتكون من 16 رقماً.";
+            isValid = false;
+          } else {
+            cardNumberError.textContent = "";
+          }
+
+          // التحقق من صحة تاريخ الانتهاء
+          const expiryDate = document.getElementById("expiryDate").value;
+          const expiryDateError = document.getElementById("expiryDateError");
+          if (!expiryDate) {
+            expiryDateError.textContent = "يرجى اختيار تاريخ الانتهاء.";
+            isValid = false;
+          } else {
+            const currentDate = new Date();
+            const [year, month] = expiryDate.split("-");
+            const expiry = new Date(year, month - 1);
+            if (expiry < currentDate) {
+              expiryDateError.textContent =
+                " تاريخ الانتهاء يجب أن يكون في المستقبل باكثر من شهر.";
+              isValid = false;
+            } else {
+              expiryDateError.textContent = "";
+            }
+          }
+
+          // التحقق من صحة CVV
+          const cvv = document.getElementById("cvv").value;
+          const cvvError = document.getElementById("cvvError");
+          if (!/^\d{3}$/.test(cvv)) {
+            cvvError.textContent = "CVV يجب أن يتكون من 3 أرقام فقط.";
+            isValid = false;
+          } else {
+            cvvError.textContent = "";
+          }
+
+          // إذا كانت جميع المدخلات صحيحة، نقوم بتوجيه المستخدم إلى صفحة التأكيد
+          if (isValid) {
+            gosToProductsPage();
+          }
+        });
+
+      // التحقق من المدخلات وإخفاء رسالة الخطأ عند التصحيح
+      document
+        .getElementById("cardNumber")
+        .addEventListener("input", function () {
+          const cardNumberError = document.getElementById("cardNumberError");
+          const cardNumber = document.getElementById("cardNumber").value;
+          if (/^\d{16}$/.test(cardNumber)) {
+            cardNumberError.textContent = ""; // إزالة الرسالة عند التصحيح
+          }
+        });
+
+      document.getElementById("cvv").addEventListener("input", function () {
+        const cvvError = document.getElementById("cvvError");
+        const cvv = document.getElementById("cvv").value;
+        if (/^\d{3}$/.test(cvv)) {
+          cvvError.textContent = ""; // إزالة الرسالة عند التصحيح
+        }
+      });
+
+      function goToProductsPage() {
+        window.location.href = "./index.html"; // توجيه المستخدم إلى صفحة المنتجات
+      }
+
+      function gosToProductsPage() {
+        window.location.href = "./visa.html"; // توجيه المستخدم إلى صفحة الفيزا
+      }
+    </script>
+  </body>
+</html>
