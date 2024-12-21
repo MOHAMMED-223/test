@@ -1,0 +1,149 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 182, 229);
+  font-family: "Times New Roman", Times, serif;
+}
+a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.header {
+  background-color: rgb(201, 142, 142);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 40px;
+}
+
+nav {
+  background-color: rgb(144, 12, 122);
+  padding: 15px;
+  display: flex;
+  color: #ffffff;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  justify-content: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+nav ul li:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+nav ul li a:hover {
+  color: rgb(144, 12, 122);
+}
+
+.img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  margin: 20px auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+main {
+  padding: 20px;
+  margin-bottom: 0; /* Removed bottom margin to align footer with the page end */
+}
+
+.C {
+  text-align: center;
+  color: rgb(144, 12, 122);
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.menu-items li {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.menu-items li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.menu-items li img {
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
+
+.menu-items li span {
+  display: block;
+  margin-top: 5px;
+  font-size: 18px;
+  color: rgb(144, 12, 122);
+  font-weight: bold;
+}
+
+footer {
+  background-color: rgb(201, 142, 142);
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: relative; /* Changed from fixed to relative */
+  width: 100%;
+  bottom: 0;
+}
+
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(150px, 1fr)
+  ); /* يعرض العناصر بشكل مرن */
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+/* عند الشاشات الكبيرة، سيتم عرض 3 عناصر في كل صف */
+@media (min-width: 768px) {
+  .menu-items {
+    grid-template-columns: repeat(3, 1fr); /* 3 أعمدة في كل صف */
+  }
+}

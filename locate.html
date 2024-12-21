@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Location - DOODLE Restaurant</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      /* Reset Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      header {
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      /* Global Styles */
+      body {
+        font-family: "Arial", sans-serif;
+
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Main Content */
+      .main-content {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .location-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+      }
+
+      .location-info {
+        flex: 1;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+      }
+
+      .location-info h2 {
+        color: rgb(215, 16, 145);
+        margin-bottom: 10px;
+      }
+
+      .location-info p {
+        margin-bottom: 15px;
+      }
+
+      .map-container {
+        flex: 1;
+        max-width: 800px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .location-section {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .location-info {
+          max-width: 100%;
+        }
+
+        .map-container {
+          max-width: 100%;
+        }
+      }
+      footer {
+        background-color: rgb(201, 142, 142);
+        color: #fff;
+        text-align: center;
+        padding: 15px 0;
+
+        position: relative; /* Changed from fixed to relative */
+        width: 100%;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">Welcome To DOODLE Restaurant</header>
+
+    <nav>
+      <ul>
+        <a href="./index.html"><li>Home</li></a>
+        <a href="./menu.html"><li>Menu</li></a>
+        <a href="./about.html"><li>About</li></a>
+        <a href="./locate.html" class="active"><li>Our location</li></a>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <section class="location-section">
+        <!-- Location Info -->
+        <div class="location-info">
+          <h2>Find Us At:</h2>
+          <p>
+            We are located at the heart of the city, providing a cozy atmosphere
+            for you to enjoy your meals!
+          </p>
+          <p><strong>Address:</strong> Fifth Settlement in New Cairo</p>
+          <p><strong>Phone:</strong> 01020855932</p>
+          <p><strong>Email:</strong> info@doodlerestaurant.com</p>
+        </div>
+
+        <!-- Map Embed -->
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.080747967328!2d31.2996066!3d30.0461558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14584795b8c11b67%3A0x4b3f9d8f4de8e68d!2z2YbZg9mK2YbZhtiv2YrYsdmG2LZr!5e0!3m2!1sen!2sin!4v1679615936020!5m2!1sen!2sin"
+            width="100%"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 DOODLE Restaurant. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

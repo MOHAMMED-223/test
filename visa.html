@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تأكيد الشراء</title>
+    <style>
+      body {
+        font-family: "Times New Roman", Times, serif;
+        text-align: center;
+        margin-top: 50px;
+        color: #333;
+        line-height: 1.6;
+        background-color: rgb(255, 182, 229); /* الخلفية بتاعت الصفحة */
+      }
+
+      .confirmation-message {
+        display: none;
+        padding: 20px;
+        background-color: rgb(201, 142, 142); /* نفس اللون بتاع الفوتر */
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+
+      .form-container {
+        width: 300px;
+        margin: 0 auto;
+      }
+
+      .yes-button,
+      .no-button,
+      .back-to-home {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+        font-size: 18px; /* تكبير حجم الخط */
+        transition: background-color 0.3s; /* تأثير التمرير */
+      }
+
+      .yes-button {
+        background-color: rgb(144, 12, 122); /* اللون البنفسجي */
+        color: white;
+      }
+
+      .yes-button:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: rgb(144, 12, 122);
+      }
+
+      .no-button {
+        background-color: #f44336;
+        color: white;
+      }
+
+      .no-button:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #f44336;
+      }
+
+      .back-to-home {
+        background-color: #ff00bf;
+        color: white;
+      }
+
+      .back-to-home:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #5c8374;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="confirmation-message">
+      <p>Are you sure about buying this product?</p>
+    </div>
+    <div class="confirmation-message" id="confirmationMessage">
+      Thank you for purchasing From Our Website DOODLE Restaurant😘💕😘
+    </div>
+    <div class="form-container">
+      <button id="confirmYes" class="yes-button" onclick="confirmPurchase()">
+        Yes
+      </button>
+      <button id="confirmNo" class="no-button" onclick="goesToHomePage()">
+        No
+      </button>
+      <button id="backToHome" class="back-to-home" onclick="goToHomePage()">
+        Return to the home page
+      </button>
+    </div>
+
+    <script>
+      function confirmPurchase() {
+        // إخفاء زري التأكيد والرفض
+        document.getElementById("confirmYes").style.display = "none";
+        document.getElementById("confirmNo").style.display = "none";
+        // عرض الرسالة
+        document.getElementById("confirmationMessage").style.display = "block";
+        // بعد 4 ثوانٍ، إعادة توجيه المستخدم إلى الصفحة الرئيسية
+        setTimeout(function () {
+          window.location.href = "./index.html";
+        }, 4000);
+      }
+
+      function goToHomePage() {
+        // إعادة توجيه المستخدم إلى الصفحة الرئيسية
+        window.location.href = "./index.html";
+      }
+      function goesToHomePage() {
+        // إعادة توجيه المستخدم إلى صفحة المتجر
+        window.location.href = "./shop.html";
+      }
+    </script>
+  </body>
+</html>
